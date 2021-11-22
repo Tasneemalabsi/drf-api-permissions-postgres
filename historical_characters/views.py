@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from .models import Character
+from .serializer import CharacterSerializer
 
-# Create your views here.
+class CharacterList(ListCreateAPIView):
+    queryset = Character.objects.all()
+    serializer_class = CharacterSerializer
+
+class CharacterDetail(RetrieveUpdateDestroyAPIView):
+    queryset = Character.objects.all()
+    serializer_class = CharacterSerializer
